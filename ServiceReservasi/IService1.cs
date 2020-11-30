@@ -12,15 +12,15 @@ namespace ServiceReservasi
     public interface IService1
     {
         [OperationContract]
-        string pemesanan(string IDPemesanan, string NamaCustomer, string NoTelpon, int JumlahPemesanan, string IDLokasi);//method//proses input data
+        string pemesanan(string IDPemesanan, string NamaCustomer, string NoTelpon, int JumlahPemesanan, string IDLokasi); //method //proses input data
         [OperationContract]
-        string editPemesanan(string IDPemesanan, string NamaCustomer);
+        string editPemesanan(string IDPemesanan, string NamaCustomer, string No_telpon);
         [OperationContract]
-        string DeletePemesanan(string IDPemesanan);
+        string deletePemesanan(string IDPemesanan);
         [OperationContract]
-        List<CekLokasi> ReviewLokasi();//nsmpilin data yang ada di database (select all) // menampilkan isi dari yang ada contract
+        List<CekLokasi> ReviewLokasi(); //nampilin data yang ada di database (menampilkan isi dari yang ada contract)
         [OperationContract]
-        List<DetailLokasi> DetailLokasi(); //menapilkan detail lokasi
+        List<DetailLokasi> DetailLokasi(); //menampilkan detail lokasi
         [OperationContract]
         List<Pemesanan> Pemesanan();
 
@@ -32,11 +32,12 @@ namespace ServiceReservasi
 
         // TODO: Add your service operations here
     }
+
     [DataContract]
-    public class CekLokasi //daftar lokasi nongrong
+    public class CekLokasi //daftar lokasi nongkrong
     {
         [DataMember]
-        public string IDLokasi { get; set; } //variabel dari publick class
+        public string IDLokasi { get; set; } //variable dari public class
         [DataMember]
         public string NamaLokasi { get; set; }
         [DataMember]
@@ -44,14 +45,14 @@ namespace ServiceReservasi
     }
 
     [DataContract]
-    public class DetailLokasi //menapilkan detail lokasi
+    public class DetailLokasi //menampilkan detail lokasi
     {
         [DataMember]
-        public string IDLokasi { get; set; }//variabel dari public class
+        public string IDLokasi { get; set; } //variable dari public class
         [DataMember]
         public string NamaLokasi { get; set; }
         [DataMember]
-        public string DeksripsiFull { get; set; }
+        public string DeskripsiFull { get; set; }
         [DataMember]
         public int kuota { get; set; }
     }
@@ -68,8 +69,9 @@ namespace ServiceReservasi
         [DataMember]
         public int JumlahPemesanan { get; set; }
         [DataMember]
-        public string IDLokasi { get; set; }
+        public string Lokasi { get; set; }
     }
+
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     // You can add XSD files into the project. After building the project, you can directly use the data types defined there, with the namespace "ServiceReservasi.ContractType".
     [DataContract]
